@@ -1,6 +1,8 @@
 Callgraph Magic
 ===============
 
+|PyPI version| |License| |Supported Python|
+
 Callgraph is a Python package that uses GraphViz to draw `dynamic call
 graphs`_ of Python function calls.
 
@@ -119,6 +121,16 @@ License
 -------
 
 MIT
+
+.. |PyPI version| image:: https://img.shields.io/pypi/v/callgraph.svg
+    :target: https://pypi.python.org/pypi/callgraph
+    :alt: Latest PyPI Version
+.. |License| image:: https://img.shields.io/pypi/l/callgraph.svg
+    :target: https://pypi.python.org/pypi/callgraph
+    :alt: License
+.. |Supported Python| image:: https://img.shields.io/pypi/pyversions/callgraph.svg
+    :target: https://pypi.python.org/pypi/callgraph
+    :alt: Supported Python Versions
 
 .. _dynamic call graphs: https://en.wikipedia.org/wiki/Call_graph
 .. _IPython: https://ipython.org
