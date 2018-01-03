@@ -1,6 +1,6 @@
 """Decorators and Jupyter IPython magic to display a dynamic call graph."""
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 from .extension import load_ipython_extension
 from .decorator import decorator
