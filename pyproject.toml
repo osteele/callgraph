@@ -1,0 +1,22 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "callgraph"
+author = "Oliver Steele"
+author-email = "steele@osteele.com"
+home-page = "https://github.com/osteele/callgraph"
+classifiers = [
+    "Framework :: IPython",
+    "Framework :: Jupyter",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python",
+]
+requires = ["graphviz (~=0.8.2)" ]
+requires-python = ">=3.5"
+dev-requires = ["ipykernel"]
