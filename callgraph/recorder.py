@@ -5,9 +5,10 @@ from graphviz import Digraph
 
 
 class CallGraphRecorder(object):
-    def __init__(self, equal=False, label_returns=False, graph_attrs={}):
+    def __init__(self, equal=False, label_returns=False, graph_attrs=None):
         self.graph = Digraph(format='svg', strict=True)
-        self.graph.graph_attr.update(**graph_attrs)
+        if graph_attrs:
+            self.graph.graph_attr.update(**graph_attrs)
         self._options = {'equal': equal, 'label_returns': label_returns}
         self._next_call_idx = 0
         self._callers = []
