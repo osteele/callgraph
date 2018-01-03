@@ -32,7 +32,7 @@ class CallGraphRecorder(object):
                                     ', '.join(starmap("{}={}".format, kwargs.items())))
         if not (label_returns and caller_id):
             label += " ↦ {}".format(result)
-        graph.node(call_id, label)
+        graph.node(call_id, label=label)
 
         if caller_id:
             if label_returns:
@@ -51,8 +51,9 @@ class CallGraphRecorder(object):
         return CallGraphCallRecorder(self, fn, args, kwargs)
 
     def _next_call_id(self, fn, args, kwargs):
+        # if it's memoized, use the function name and arguments as a node id.
         if self._options['equal'] or isinstance(fn, functools._lru_cache_wrapper):
-            return '{}{}{}'.format(fn, args, kwargs)
+            return '{}{}{}'.format(getattr(fn, '__name__', str(fn)), args, kwargs)
         self._next_call_idx += 1
         return str(self._next_call_idx)
 
