@@ -55,7 +55,7 @@ def nchoosek(n, k):
 %callgraph nchoosek(4, 2)
 ```
 
-See <https://github.com/osteele/callgraph/blob/master/callgraph-magic-examples.ipynb.ipynb>
+See <https://github.com/osteele/callgraph/blob/master/examples/callgraph-magic-examples.ipynb>
 for additional instructions and examples.
 
 ## Decorator Usage
@@ -82,7 +82,7 @@ nchoosek(5, 2)
 nchoosek.__callgraph__.view()
 ```
 
-See <https://github.com/osteele/callgraph/blob/master/callgraph-decorator-examples.ipynb.ipynb>
+See <https://github.com/osteele/callgraph/blob/master/examples/callgraph-decorator-examples.ipynb>
 for additional instructions and examples.
 
 ## Development
