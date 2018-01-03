@@ -17,45 +17,50 @@ class CallGraphMagics(Magics):
     def callgraph(self, line, local_ns=None):
         """Display the dynamic call graph for a Python statement or expression.
 
-        Usage:
-          %callgraph nchoosek(5, 2)
+        Usage::
+
+            %callgraph nchoosek(5, 2)
 
         This magic instruments global functions that are named in the statement.
         On completion, the functions are restored to their original values.
 
-        The magic knows about functions that are decorated with functools.lru_cache.
-        Two calls with the same arguments to a cached function will display as
-        the same node. For simplicity, "same" to the instrumentation just means
-        same string representation. It also ignores the `maxsize` and `typed`
-        arguments to lru_cache.
+        The magic knows about functions that are decorated with
+        :func:`functools.lru_cache`. Two calls with the same arguments to a
+        cached function will display as the same node. For simplicity, "same"
+        to the instrumentation just means same string representation. It also
+        ignores the `maxsize` and `typed` arguments to
+        :func:`~functools.lru_cache`.
 
         Options:
 
-        -h: display the graph “horizontally”, with function calls running from left to right.
+        -h: display the graph “horizontally”, with function calls running from
+        left to right.
 
-        -r: reverse the graph (display arrows from callee to caller). Label the arrows with the return values.
+        -r: reverse the graph (display arrows from callee to caller). Label the
+        arrows with the return values.
 
         -w<N>: max width of the graph
 
-        --no-clear: Don't clear lru_cache caches before execution.
+        --no-clear: Don't clear :func:`~functools.lru_cache` caches before
+        execution.
 
         Examples
         --------
-        ```
-        from functools import lru_cache
+        ::
 
-        @lru_cache()
-        def nchoosek(n, k):
-            if k == 0:
-                return 1
-            if n == k:
-                return 1
-            return nchoosek(n - 1, k - 1) + nchoosek(n - 1, k)
+            from functools import lru_cache
 
-        %callgraph nchoosek(5, 2)
-        %callgraph nchoosek(5, 2); nchoosek(5, 3)
-        %callgraph -r nchoosek(5, 2)
-        ```
+            @lru_cache()
+            def nchoosek(n, k):
+                if k == 0:
+                    return 1
+                if n == k:
+                    return 1
+                return nchoosek(n - 1, k - 1) + nchoosek(n - 1, k)
+
+            %callgraph nchoosek(5, 2)
+            %callgraph nchoosek(5, 2); nchoosek(5, 3)
+            %callgraph -r nchoosek(5, 2)
         """
         # Some constants.
         filename = '<magic callgraph>'

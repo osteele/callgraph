@@ -43,10 +43,13 @@ class CallGraphRecorder(object):
             graph.node(call_id, penwidth='3')
 
     def record(self, fn, args, kwargs):
-        """Usage:
-            with recorder.record(fn, args, kwargs) as record_return:
-                …
-                record_return(result)
+        """Return a resource that can be used to record a function call.
+
+        Usage::
+
+                with recorder.record(fn, args, kwargs) as record_return:
+                    …
+                    record_return(result)
         """
         return CallGraphCallRecorder(self, fn, args, kwargs)
 
