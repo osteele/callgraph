@@ -64,7 +64,7 @@ class CallGraphMagics(Magics):
         if 'e' in opts:
             options['equal'] = True
         if 'r' in opts:
-            options['returns'] = True
+            options['label_returns'] = True
         if 'h' in opts:
             options['graph_attrs']['rankdir'] = 'LR'
         if 'w' in opts:
