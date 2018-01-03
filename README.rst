@@ -36,7 +36,7 @@ displays a call graph within a Jupyter cell:
 
 It also provides a Python decorator ``callgraph.decorator``, that
 instruments a function to collect call graph information and render the
-result:
+result.
 
 Jupyter Usage
 -------------
