@@ -1,0 +1,129 @@
+Callgraph Magic
+===============
+
+Callgraph is a Python package that uses GraphViz to draw `dynamic call
+graphs`_ of Python function calls.
+
+It’s intended for classroom use, but may also be useful for self-guided
+exploration.
+
+The package defines a Jupyter `IPython`_ `magic`_, ``%callgraph``, that
+displays a call graph within a Jupyter cell:
+
+.. code:: python
+
+    from functools import lru_cache
+
+    @lru_cache()
+    def lev(a, b):
+        if "" in (a, b):
+            return len(a) + len(b)
+
+        candidates = []
+        if a[0] == b[0]:
+            candidates.append(lev(a[1:], b[1:]))
+        else:
+            candidates.append(lev(a[1:], b[1:]) + 1)
+        candidates.append(lev(a, b[1:]) + 1)
+        candidates.append(lev(a[1:], b) + 1)
+        return min(candidates)
+
+    %callgraph -w10 lev("big", "dog"); lev("dig", "dog")
+
+|image0|
+
+It also provides a Python decorator ``callgraph.decorator``, that
+instruments a function to collect call graph information and render the
+result:
+
+Jupyter Usage
+-------------
+
+.. code:: bash
+
+    $ pip install callgraph
+
+In a Jupyter notebook:
+
+.. code:: python
+
+    %load_ext callgraph
+
+    def nchoosek(n, k):
+        if k == 0:
+            return 1
+        if n == k:
+            return 1
+        return nchoosek(n - 1, k - 1) + nchoosek(n - 1, k)
+
+    %callgraph nchoosek(4, 2)
+
+See
+https://github.com/osteele/callgraph/blob/master/examples/callgraph-magic-examples.ipynb
+for additional instructions and examples.
+
+Decorator Usage
+---------------
+
+.. code:: bash
+
+    $ pip install callgraph
+
+.. code:: python
+
+    from functools import lru_cache
+    import callgraph.decorator as callgraph
+
+    @callgraph()
+    @lru_cache()
+    def nchoosek(n, k):
+        if k == 0:
+            return 1
+        if n == k:
+            return 1
+        return nchoosek(n - 1, k - 1) + nchoosek(n - 1, k)
+
+    nchoosek(5, 2)
+
+    nchoosek.__callgraph__.view()
+
+See
+https://github.com/osteele/callgraph/blob/master/examples/callgraph-decorator-examples.ipynb
+for additional instructions and examples.
+
+Development
+-----------
+
+Install dev tools, and set up a Jupyter kernel for the current python
+enviromnent:
+
+.. code:: bash
+
+    $ pip install flit
+    $ pip install ipykernel
+    $ python -m ipykernel install --user
+
+Install locally:
+
+.. code:: bash
+
+    flit install --symlink
+
+Acknowledgements
+----------------
+
+Callgraph uses the Python `graphviz package`_. Python graphviz uses
+the `Graphviz`_ package.
+
+License
+-------
+
+MIT
+
+.. _dynamic call graphs: https://en.wikipedia.org/wiki/Call_graph
+.. _IPython: https://ipython.org
+.. _magic: http://ipython.readthedocs.io/en/stable/interactive/magics.html
+.. _graphviz package: https://github.com/xflr6/graphviz
+.. _Graphviz: https://www.graphviz.org
+
+.. |image0| image:: ./docs/images/lev.svg
