@@ -5,6 +5,8 @@ from graphviz import Digraph
 
 
 class CallGraphRecorder(object):
+    "Record function calls into a Graphviz diagraph."
+
     def __init__(self, equal=False, label_returns=False, graph_attrs=None):
         self.graph = Digraph(format='svg', strict=True)
         if graph_attrs:
@@ -14,7 +16,7 @@ class CallGraphRecorder(object):
         self._callers = []
 
     def wrap(self, fn):
-        "A decorator that wraps fn with instrumentation to record calls."
+        "A decorator that wraps fn with instrumentation to record calls to it."
         @wraps(fn)
         def wrapper(*args, **kwargs):
             with self.record(fn, args, kwargs) as record_return:
@@ -24,6 +26,7 @@ class CallGraphRecorder(object):
         return wrapper
 
     def _record(self, caller_id, call_id, fn, args, kwargs, result):
+        "Record a function call."
         graph = self.graph
         label_returns = self._options['label_returns']
         label = "{}({}{}{})".format(fn.__name__,
@@ -43,7 +46,7 @@ class CallGraphRecorder(object):
             graph.node(call_id, penwidth='3')
 
     def record(self, fn, args, kwargs):
-        """Return a resource that can be used to record a function call.
+        """Return a context manager that records a function call.
 
         Usage::
 
@@ -62,6 +65,9 @@ class CallGraphRecorder(object):
 
 
 class CallGraphCallRecorder(object):
+    """A context manager that records a function call on its associated
+    CallGraphRecorder.
+    """
     __slots__ = ['_recorder', '_fn', '_args', '_kwargs']
 
     def __init__(self, recorder, fn, args, kwargs):

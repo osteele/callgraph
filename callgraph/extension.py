@@ -11,6 +11,7 @@ from .instrumentor import CallGraphInstrumentor
 
 @magics_class
 class CallGraphMagics(Magics):
+
     @skip_doctest
     @line_cell_magic
     @needs_local_scope
@@ -85,6 +86,10 @@ class CallGraphMagics(Magics):
         calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call)]
         fn_names = [n.func.id for n in calls if isinstance(n.func, ast.Name)]
 
+        # Clear lru_cache caches. We actually invoke the cache_clear method
+        # of any function with a callable cache_clear attribute. This affords
+        # the opportunity to use this mechanism on other memoization decorators,
+        # although I'm not aware of any at the moment.
         if 'no-clear' not in opts:
             fns = (local_ns[name] for name in fn_names if name in local_ns)
             clear_fns = filter(
