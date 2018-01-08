@@ -2,7 +2,32 @@ from .recorder import CallGraphRecorder
 
 
 def decorator(fn=None, recorder=None, label_returns=False, graph_attrs=None):
-    """A decorator that instruments a function to record calls to it."""
+    """A decorator that instruments a function to record calls to it.
+
+    Parameters
+    ----------
+    recorder: CallGraphRecorder
+        An optional CallGraphRecorder
+    label_returns: bool
+        If true, arrows are draw from callee to caller, and labeled with the
+        return value.
+    graph_attrs: dict
+        Graphviz graph attributes
+
+    Examples
+    --------
+    ::
+
+        import callgraph.decorator as callgraph
+
+        @callgraph()
+        def nchoosek(n, k):
+            if k == 0:
+                return 1
+            if n == k:
+                return 1
+            return nchoosek(n - 1, k - 1) + nchoosek(n - 1, k)
+    """
     rec = recorder or CallGraphRecorder(label_returns=label_returns,
                                         graph_attrs=graph_attrs)
 

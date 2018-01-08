@@ -107,5 +107,8 @@ class CallGraphMagics(Magics):
 
 
 def load_ipython_extension(ipython):
-    "Register the IPython magic."
+    """Register the IPython magic.
+
+    Jupyter / IPython calls this when the extension is loaded.
+    """
     ipython.register_magics(CallGraphMagics)

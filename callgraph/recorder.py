@@ -16,7 +16,10 @@ class CallGraphRecorder(object):
         self._callers = []
 
     def wrap(self, fn):
-        "A decorator that wraps fn with instrumentation to record calls to it."
+        """A decorator that wraps fn with instrumentation to record calls to it.
+
+        You probably want :func:`decorator` instead.
+        """
         @wraps(fn)
         def wrapper(*args, **kwargs):
             with self.record(fn, args, kwargs) as record_return:

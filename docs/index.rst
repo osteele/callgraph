@@ -5,15 +5,8 @@
    :caption: Contents:
 
 
+API
+---
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-.. module:: callgraph
-.. autosummary::
-
-   extensions.CallGraphMagics
+.. automodule:: callgraph
+    :members:

@@ -1,10 +1,10 @@
 Callgraph Magic
 ===============
 
-|PyPI version| |License| |Supported Python|
+|PyPI version| |Doc Status| |License| |Supported Python|
 
-Callgraph is a Python package that uses GraphViz to draw `dynamic call
-graphs`_ of Python function calls.
+Callgraph is a Python package that defines a decorator, and Jupyter magic,
+to draw `dynamic call graphs`_ of Python function calls.
 
 It’s intended for classroom use, but may also be useful for self-guided
 exploration.
@@ -34,7 +34,7 @@ displays a call graph within a Jupyter cell:
 
 |image0|
 
-It also provides a Python decorator ``callgraph.decorator``, that
+It also provides a Python decorator, ``callgraph.decorator``, that
 instruments a function to collect call graph information and render the
 result.
 
@@ -60,9 +60,7 @@ In a Jupyter notebook:
 
     %callgraph nchoosek(4, 2)
 
-See
-https://github.com/osteele/callgraph/blob/master/examples/callgraph-magic-examples.ipynb
-for additional instructions and examples.
+See `extension example notebook`_ for additional instructions and examples.
 
 Decorator Usage
 ---------------
@@ -89,9 +87,9 @@ Decorator Usage
 
     nchoosek.__callgraph__.view()
 
-See
-https://github.com/osteele/callgraph/blob/master/examples/callgraph-decorator-examples.ipynb
-for additional instructions and examples.
+See the `API documentation`_ for additional documentation.
+
+See the `decorator example notebook`_ for additional instructions and examples.
 
 Development
 -----------
@@ -125,6 +123,9 @@ MIT
 .. |PyPI version| image:: https://img.shields.io/pypi/v/callgraph.svg
     :target: https://pypi.python.org/pypi/callgraph
     :alt: Latest PyPI Version
+.. |Doc Status| image:: https://readthedocs.org/projects/callgraph/badge/?version=latest
+    :target: http://callgraph.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 .. |License| image:: https://img.shields.io/pypi/l/callgraph.svg
     :target: https://pypi.python.org/pypi/callgraph
     :alt: License
@@ -139,3 +140,6 @@ MIT
 .. _Graphviz: https://www.graphviz.org
 
 .. |image0| image:: ./docs/images/lev.svg
+.. _API documentation: http://callgraph.readthedocs.io/en/latest/?badge=latest#module-callgraph
+.. _extension example notebook: https://github.com/osteele/callgraph/blob/master/examples/callgraph-magic-examples.ipynb
+.. _decorator example notebook: https://github.com/osteele/callgraph/blob/master/examples/callgraph-decorator-examples.ipynb
