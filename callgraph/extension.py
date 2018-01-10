@@ -1,3 +1,5 @@
+"Jupyter IPython magic to display a dynamic call graph."
+
 import ast
 
 from IPython.core.magic import (Magics, line_magic, line_cell_magic,
@@ -112,12 +114,7 @@ def load_ipython_extension(ipython):
     Jupyter / IPython calls this when the extension is loaded.
     You don't need to.
 
-    Instead, in IPython::
-
-        %load_ext callgraph
-
-    Or, in ``~/.jupyter/jupyter_notebook_config.py``::
-
-        c.InteractiveShellApp.extensions = ["callgraph.extension"]
+    See the package documentation for instructions on how to tell Jupyter
+    to load the extension.
     """
     ipython.register_magics(CallGraphMagics)

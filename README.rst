@@ -38,14 +38,14 @@ It also provides a Python decorator, ``callgraph.decorator``, that
 instruments a function to collect call graph information and render the
 result.
 
-Jupyter Usage
--------------
+Jupyter / IPython Usage
+-----------------------
 
 .. code:: bash
 
     $ pip install callgraph
 
-In a Jupyter notebook:
+In a Jupyter IPython notebook:
 
 .. code:: python
 
@@ -60,7 +60,21 @@ In a Jupyter notebook:
 
     %callgraph nchoosek(4, 2)
 
-See `extension example notebook`_ for additional instructions and examples.
+As an alternative to including ``%load_ext callgraph`` in each notebook that
+uses ``%callgraph``, you can add the extension to the Notebook
+configuration file in your IPython profile.
+
+Your configuration file is probably called ``ipython/profile_default/ipython_config.py``.
+(You can run ``ipython profile locate`` to find it.)
+Edit this file to include the following line::
+
+    c.InteractiveShellApp.extensions = ["callgraph.extension"]
+
+(If your configuration file already includes an uncommented statement
+``c.InteractiveShellApp.extensions = […]``, edit the list of extensions in
+that line to include ``"callgraph.extension"``.
+
+See `extension example notebook`_ for additional examples.
 
 Decorator Usage
 ---------------
