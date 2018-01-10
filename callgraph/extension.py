@@ -110,5 +110,14 @@ def load_ipython_extension(ipython):
     """Register the IPython magic.
 
     Jupyter / IPython calls this when the extension is loaded.
+    You don't need to.
+
+    Instead, in IPython::
+
+        %load_ext callgraph
+
+    Or, in ``~/.jupyter/jupyter_notebook_config.py``::
+
+        c.InteractiveShellApp.extensions = ["callgraph.extension"]
     """
     ipython.register_magics(CallGraphMagics)

@@ -5,7 +5,13 @@ from graphviz import Digraph
 
 
 class CallGraphRecorder(object):
-    "Record function calls into a Graphviz diagraph."
+    """Record function calls into a Graphviz diagraph.
+
+    Attributes
+    ----------
+    graph : Digraph
+        A :class:`graphviz.Digraph`.
+    """
 
     def __init__(self, equal=False, label_returns=False, graph_attrs=None):
         self.graph = Digraph(format='svg', strict=True)
@@ -51,10 +57,17 @@ class CallGraphRecorder(object):
     def record(self, fn, args, kwargs):
         """Return a context manager that records a function call.
 
-        Usage::
+        Returns
+        -------
+        CallGraphCallRecorder
+            A context manager that records a function call.
+
+        Examples
+        --------
+        ::
 
                 with recorder.record(fn, args, kwargs) as record_return:
-                    …
+                    result = fn(*args, **kwargs)
                     record_return(result)
         """
         return CallGraphCallRecorder(self, fn, args, kwargs)

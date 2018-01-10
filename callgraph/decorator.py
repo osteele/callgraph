@@ -2,17 +2,22 @@ from .recorder import CallGraphRecorder
 
 
 def decorator(fn=None, recorder=None, label_returns=False, graph_attrs=None):
-    """A decorator that instruments a function to record calls to it.
+    """Decorator that wraps a function with instrumentation to record calls to
+    it, for use in constructing a call graph.
 
     Parameters
     ----------
-    recorder: CallGraphRecorder
-        An optional CallGraphRecorder
-    label_returns: bool
+    recorder : CallGraphRecorder, optional
+        An CallGraphRecorder. If this is not supplied, a new recorder is created
+        with the specified values for ``label_returns`` and ``graph_attrs``,
+        and attached to the decorated function as ``fn.__callgraph__``.
+    label_returns : bool
         If true, arrows are draw from callee to caller, and labeled with the
         return value.
-    graph_attrs: dict
-        Graphviz graph attributes
+    graph_attrs : dict
+        Graphviz graph attributes. These are passed to
+        :meth:`graphviz.Digraph.attr`.
+        A new :class:`graphviz.Digraph`.
 
     Examples
     --------
