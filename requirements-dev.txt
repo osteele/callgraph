@@ -1,0 +1,9 @@
+-r requirements.txt
+
+bumpversion~=0.5.3
+flit~=0.13
+ipykernel~=4.7.0
+keyring~=10.6.0
+pytest~=3.2.2
+sphinx_rtd_theme~=0.2.4
+Sphinx~=1.6.5

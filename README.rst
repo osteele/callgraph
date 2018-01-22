@@ -113,8 +113,7 @@ enviromnent:
 
 .. code:: bash
 
-    $ pip install flit
-    $ pip install ipykernel
+    $ pip install -r requirements-dev.txt
     $ python -m ipykernel install --user
 
 Install locally:
