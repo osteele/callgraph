@@ -2,8 +2,8 @@
 
 import ast
 
-from IPython.core.magic import (Magics, line_magic, line_cell_magic,
-                                magics_class, needs_local_scope)
+from IPython.core.magic import (Magics, line_cell_magic, magics_class,
+                                needs_local_scope)
 from IPython.display import SVG, display
 from IPython.testing.skipdoctest import skip_doctest
 
@@ -104,7 +104,7 @@ class CallGraphMagics(Magics):
         # qfns = list(n.func for n in calls if isinstance(n.func, ast.Attribute))
 
         with CallGraphInstrumentor(fn_names, recorder=recorder, local_ns=local_ns) as recorder:
-            exec(compile(tree, filename=filename, mode=mode), local_ns)
+            exec(compile(tree, filename=filename, mode=mode), local_ns)  # pylint: disable=exec-used
             display(SVG(data=recorder.graph._repr_svg_()))
 
 

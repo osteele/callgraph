@@ -1,0 +1,8 @@
+[MASTER]
+
+ignore=dist
+jobs=4
+
+[MESSAGES CONTROL]
+
+disable=C0103,C0111,W0212,too-few-public-methods

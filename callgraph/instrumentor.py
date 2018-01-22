@@ -20,7 +20,7 @@ class CallGraphInstrumentor(object):
         self._restore = fns
         return self.recorder
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, _type, _value, _traceback):
         ns = self._ns
         fns = self._restore
         for name, fn in fns.items():

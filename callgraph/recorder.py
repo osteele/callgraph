@@ -102,5 +102,5 @@ class CallGraphCallRecorder(object):
             recorder._record(caller_id, call_id, fn, args, kwargs, result)
         return record_return
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, _type, _value, _traceback):
         self._recorder._callers.pop()
