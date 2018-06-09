@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[scripts]
+lint = "flake8 *.py examples"
+
+[packages]
+ipython = "*"
+graphviz = "*"
+
+[dev-packages]
+bumpversion = "*"
+# flit = "*"
+ipykernel = "*"
+keyring = "*"
+nbformat = "*"
+pytest = "*"
+sphinx_rtd_theme = "*"
+Sphinx = "*"
+
+[requires]
+python_version = "3.6"
