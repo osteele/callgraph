@@ -20,6 +20,7 @@ pytest = "*"
 sphinx_rtd_theme = "*"
 Sphinx = "*"
 nbconvert = "*"
+tox = "*"
 
 [requires]
 python_version = "3.6"
