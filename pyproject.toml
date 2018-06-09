@@ -27,3 +27,6 @@ dev-requires = [
     "sphinx_rtd_theme",
 ]
 description-file = "./README.rst"
+
+[tool.flit.metadata.urls]
+Documentation = "https://callgraph.readthedocs.io/en/latest/"

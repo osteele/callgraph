@@ -64,7 +64,7 @@ As an alternative to including ``%load_ext callgraph`` in each notebook that
 uses ``%callgraph``, you can add the extension to the Notebook
 configuration file in your IPython profile.
 
-Your configuration file is probably called ``ipython/profile_default/ipython_config.py``.
+Your configuration file is probably called ``~/.ipython/profile_default/ipython_config.py``.
 (You can run ``ipython profile locate`` to find it.)
 Edit this file to include the following line::
 
