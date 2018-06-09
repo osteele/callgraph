@@ -19,6 +19,7 @@ nbformat = "*"
 pytest = "*"
 sphinx_rtd_theme = "*"
 Sphinx = "*"
+nbconvert = "*"
 
 [requires]
 python_version = "3.6"
