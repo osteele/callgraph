@@ -1,6 +1,7 @@
 import functools
 from functools import wraps
 from itertools import starmap
+
 from graphviz import Digraph
 
 
