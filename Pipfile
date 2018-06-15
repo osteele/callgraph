@@ -12,7 +12,7 @@ graphviz = "*"
 
 [dev-packages]
 bumpversion = "*"
-# flit = "*"
+flit = "*"
 ipykernel = "*"
 keyring = "*"
 nbformat = "*"

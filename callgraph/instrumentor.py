@@ -1,10 +1,15 @@
+"""Callgraph context manager."""
+
 from .recorder import CallGraphRecorder
 
 
 class CallGraphInstrumentor(object):
-    """A context manager that instruments (dynamically decorators) a collection
+    """Callgraph context manager.
+
+    A context manager that instruments (dynamically decorators) a collection
     of functions in a namespace on entry, and restores their saved values on
-    exit."""
+    exit.
+    """
 
     def __init__(self, names, recorder=None, local_ns=None):
         self.recorder = recorder or CallGraphRecorder()

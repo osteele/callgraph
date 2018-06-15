@@ -1,4 +1,4 @@
-"Jupyter IPython magic to display a dynamic call graph."
+"""Jupyter IPython magic to display a dynamic call graph."""
 
 import ast
 
@@ -12,6 +12,7 @@ from .recorder import CallGraphRecorder
 
 @magics_class
 class CallGraphMagics(Magics):
+    """Jupyter Magics class that adds a ``%callgraph`` magic."""
 
     @skip_doctest
     @line_cell_magic

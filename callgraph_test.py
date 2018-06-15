@@ -10,7 +10,7 @@ IPYTHON_CONFIG_PATH = PROJECT_HOME / 'config/ipython_config.py'
 
 
 def read_notebook(basename):
-    "Read notebook `basename` from the test files directory."
+    """Read notebook `basename` from the test files directory."""
     if not basename.endswith('.ipynb'):
         basename += '.ipynb'
     return nbformat.read(
@@ -20,13 +20,13 @@ def read_notebook(basename):
 
 def test_callgraph():
     res = subprocess.run(["jupyter", "nbconvert",
-               "--to", "notebook",
-               "--config=" + str(IPYTHON_CONFIG_PATH),
-               "--execute", str(EXAMPLE_NB_PATH),
-               "--ExecutePreprocessor.kernel_name=python3",
-               "--stdout",
-               ],
-              stdout=subprocess.PIPE)
+                          "--to", "notebook",
+                          "--config=" + str(IPYTHON_CONFIG_PATH),
+                          "--execute", str(EXAMPLE_NB_PATH),
+                          "--ExecutePreprocessor.kernel_name=python3",
+                          "--stdout",
+                          ],
+                         stdout=subprocess.PIPE)
     assert res.returncode == 0
     assert res.stdout is not None
     gm = read_notebook(str(EXAMPLE_NB_PATH))

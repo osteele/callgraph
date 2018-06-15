@@ -1,8 +1,12 @@
+"""Callgraph decorators."""
+
 from .recorder import CallGraphRecorder
 
 
 def decorator(fn=None, recorder=None, label_returns=False, graph_attrs=None):
-    """Decorator that wraps a function with instrumentation to record calls to
+    """Instrument a function to record calls for the call graph.
+
+    Decorator that wraps a function with instrumentation to record calls to
     it, for use in constructing a call graph.
 
     Parameters

@@ -1,3 +1,5 @@
+"""Record function calls into a Graphviz diagraph."""
+
 import functools
 from functools import wraps
 from itertools import starmap
@@ -23,7 +25,7 @@ class CallGraphRecorder(object):
         self._callers = []
 
     def wrap(self, fn):
-        """A decorator that wraps fn with instrumentation to record calls to it.
+        """Wrap fn with instrumentation to record calls to it.
 
         You probably want :func:`decorator` instead.
         """
@@ -36,7 +38,7 @@ class CallGraphRecorder(object):
         return wrapper
 
     def _record(self, caller_id, call_id, fn, args, kwargs, result):
-        "Record a function call."
+        """Record a function call."""
         graph = self.graph
         label_returns = self._options['label_returns']
         label = "{}({}{}{})".format(fn.__name__,
@@ -82,9 +84,12 @@ class CallGraphRecorder(object):
 
 
 class CallGraphCallRecorder(object):
-    """A context manager that records a function call on its associated
+    """Context manager for record callgraph function calls.
+
+    A context manager that records a function call on its associated
     CallGraphRecorder.
     """
+
     __slots__ = ['_recorder', '_fn', '_args', '_kwargs']
 
     def __init__(self, recorder, fn, args, kwargs):
